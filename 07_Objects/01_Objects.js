@@ -1,5 +1,5 @@
 // Singelton 
-// Object.create
+// Object.create()
 
 // Object Literals
 
