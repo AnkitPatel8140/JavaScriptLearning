@@ -1,9 +1,12 @@
-// we cannot change const
+// it is block scope, we cannot change const
 const id = 1234
-// it has a scope, it cannot be redeclared
+
+// it is block scope, it cannot be redeclared
 let name = "Ankit"
-// it is scopeless, it can be redeclared
+
+// it is function scoped not block scoped, it can be redeclared
 var email = "abc@gmail.com"
+
 // it is also valid, this can also be redeclared
 password = "12345"
 
