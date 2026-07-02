@@ -39,3 +39,6 @@ objs.forEach( (item) => {
         console.log(key);
     }
 } )
+
+// for each loop never returns anything,
+// even if we use return statement it will not return anything
