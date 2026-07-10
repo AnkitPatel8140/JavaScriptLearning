@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html events</title>  
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <!-- onclick="alert('owl clicked')" -->
+            <!-- we can add events in the elements themselves like this -->
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl"  src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // the problem with this approach is that we do not get
+    // much information from this, we should use event listener.
+
+    // document.getElementById("owl").onclick = function() {
+    //     alert("owl clicked from function");
+    // };
+
+
+
+    // event listener syntax
+    // document.getElementById("owl").addEventListener("click", function() {
+    //     alert("owl clicked from event listener");
+    // }, false);
+
+
+
+    // here owl is inside the images 
+    // so when the owl is clicked it will bubble up the event
+    // i.e first the owl event will be called then the images
+    // just like the bubble it grows from inside out.
+    // false is the default value, and it triggers event bubbling
+    // there is also another mode capturing,
+    // when we set the third value to true it enables capturing
+    // in capturing it goes from parent to child, opposite of bubbling
+    // both bubbling and capturing are part of event propogation
+    // if we want to stop event propagation we use event.stopPropagation()
+
+    // document.getElementById("images").addEventListener("click", function(e) {
+    //     console.log("image clicked");
+    // }, false);
+    // document.getElementById("owl").addEventListener("click", function(e) {
+    //     console.log("owl");
+    //     e.stopPropagation();
+    // }, false);
+
+
+    // document.getElementById("google").addEventListener("click", function(e) {
+    //     // if we want to prevent the default behaviour then we use this.
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     console.log("google clicked");
+    // });
+
+
+
+
+
+
+
+
+    // we want to create a function where when we click on the images then it is removed;
+
+    document.querySelector("#images").addEventListener("click", function(e) {
+        console.log(e.target.tagName);
+        if(e.target.tagName === "IMG") {
+            const removeIt = e.target.parentNode;
+            removeIt.remove();
+            // another way of removing the element
+            // removeIt.parentNode.removeChild(removeIt);
+        }
+    });
+    
+
+</script>
+</html>
